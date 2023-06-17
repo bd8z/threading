@@ -2,20 +2,15 @@ import threading
 import time
 
 
-def nijou():
+def threadFoo():
     while True:
-        print("bool")
+        print("foo")
         time.sleep(1)
 
 if __name__ == "__main__":
 
-    #daemonをTrueにすると、メインスレッドの停止に応じて終了できる。
-    thread = threading.Thread(target=nijou, name='thread1',daemon = True)
-
+    #daemonをTrueにすると、メインスレッドと同時に終了できる
+    thread = threading.Thread(target=threadFoo, name='thread1',daemon = True)
     thread.start()
-
-    #threadの識別子を取得できる
-    print(thread.ident)
     time.sleep(5)
-
-    print("end")
+    print("---end---")
